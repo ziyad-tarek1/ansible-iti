@@ -1,0 +1,13 @@
+---
+- name: Add message to /etc/motd
+  hosts: all
+  become: yes
+  tasks:
+    - name: Add message in /etc/motd
+      ansible.builtin.lineinfile:
+        path: /etc/motd
+        line: "{{ message }}"
+
+    - name: Show the message variable
+      ansible.builtin.debug:
+        msg: "The message is: {{ message }}"
